@@ -1,2 +1,12 @@
-# INVERTED-PENDULUM-MPC
-Inverted Pendulum Model Predictive Controller Design with Simscape
+# Inverted Pendulum Model Predictive Controller Design with Simscape
+# Intelligent Control Systems Fall 2022
+# YTU Department of Control and Automation Engineering By Ali Can Erdoğan
+
+![picture](https://user-images.githubusercontent.com/132692602/236675759-4510126a-e170-4b9a-aee6-ba3864b71e1e.png)
+
+This project involves modeling a pendulum system on a cart using SOLIDWORKS and transferring the model to the Simulink Simscape platform with the MATLAB-SOLIDWORKS Add-In. The system is controlled by a Model Predictive Controller (MPC), which requires a linear time-invariant (LTI) system model. However, the system was not linearized analitically. To linearize the system, the Control System Toolbox in MATLAB is used, specifically the "linearize()" function. Before using this function, an object is created in the workspace to define the plant's specifications. The system is linearized at the upward position, where the initial states of the cart's position (x) and the pendulum's angle (theta) are set to zero. The operating points of the plant are determined using the "findopOptions()" function. The linearize() function is then applied to the plant model using the defined operating points. The Model Predictive Control Toolbox provides the "setmpcsignals()" function, which allows the definition of an unmeasured disturbance (dF disturbance force) for better disturbance rejection. Sliders are used to quickly change the parameters of the controller and observe the corresponding changes in controller performance.
+
+Due to a limitation in the motor torque of the system, the manipulated variable (force) is also limited. Therefore, minimum and maximum values for the manipulated variable need to be defined to restrict the required force. The simulation includes Manipulated Variable Scale Factor and Manipulated Variable Scale Factor to adjust the performance. To achieve balanced performance, the weights on the plant outputs (cart position and pendulum angle) are adjusted. For more aggressive disturbance rejection, the state estimator gain is increased by multiplying the default disturbance model gains by a factor of 10. Additionally, the input disturbance model is updated as part of the project.
+
+# Acknowledgements
+I would like to express my gratitude to the students of the Intelligent Control Systems course of the YTÜ Control and Automation Engineering department, Class of Fall 2022, whose dedication and hard work made this project possible. I am also deeply thankful to Doctors Marco Rossi, Julia Hoerner, and Melda Ulusoy for their invaluable contributions.
